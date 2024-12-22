@@ -1,6 +1,8 @@
 package com.dicoding.storyapp.view.main
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -17,6 +19,11 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         repository.getAllStory().cachedIn(viewModelScope)
     val listStory = repository.listStory
     val detail = repository.detail
+
+    private var _curImage = MutableLiveData<Uri?>()
+    val curImage : MutableLiveData<Uri?> = _curImage
+
+    fun setCurImage(uri : Uri?) { _curImage.value = uri }
 
     fun signup(name: String, email: String, password: String) = repository.signup(name, email, password)
     fun login(email: String, password: String) = repository.login(email, password)

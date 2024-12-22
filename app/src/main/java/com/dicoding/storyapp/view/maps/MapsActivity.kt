@@ -99,7 +99,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                 .position(latLng)
                                 .title(res.name)
                                 .snippet(res.description)
-                                .icon(vectorToBitmap(R.drawable.ic_story_marker, Color.parseColor("#3DDC84"), this@MapsActivity))
+                                .icon(vectorToBitmap(R.drawable.ic_marker, Color.parseColor("#3DDC84"), this@MapsActivity))
                         )
                         boundsBuilder.include(latLng)
                         Log.d("MapsActivity", "Story: ${res.name}, Lat: ${res.lat}, Lon: ${res.lon}")

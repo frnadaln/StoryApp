@@ -77,22 +77,31 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:orientation="horizontal"
-            tools:ignore="MissingConstraints">
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:background="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descLayout"
+            app:layout_constraintEnd_toEndOf="parent">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity=""
-                android:layout_marginEnd="24dp"
-                android:text="@string/enable_location"/>
+                android:layout_marginEnd="16dp"
+                android:text="@string/enable_location" />
+
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/buttonEnableLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/enable_location"
-                android:textOn="@string/on"
-                android:textOff="@string/off" />
+                android:layout_width="48dp"
+                android:layout_height="24dp"
+                android:textOff=""
+                android:textOn=""
+                android:switchTextAppearance="@null"
+                app:thumbTint="@color/purple"
+                app:trackTint="@color/purple2" />
 
         </LinearLayout>
+
 
         <!-- Upload Button -->
         <Button
@@ -102,10 +111,11 @@
             android:layout_margin="16dp"
             android:text="@string/upload"
             android:backgroundTint="@color/purple2"
-            app:layout_constraintTop_toBottomOf="@+id/descLayout"
+            app:layout_constraintTop_toBottomOf="@id/buttonEnableLocation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="NotSibling" />
 
         <!-- ProgressBar -->
         <ProgressBar

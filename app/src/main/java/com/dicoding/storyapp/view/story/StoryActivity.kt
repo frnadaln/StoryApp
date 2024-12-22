@@ -77,6 +77,13 @@ class StoryActivity : AppCompatActivity() {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
             requestLocationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
+        setupAction()
+    }
+
+        private fun setupAction() {
+            viewModel.curImage.observe(this) {image ->
+                binding.previewImageView.setImageURI(image)
+            }
 
         binding.buttonEnableLocation.setOnCheckedChangeListener {_, isChecked->
             if(isChecked) {

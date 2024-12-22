@@ -122,7 +122,7 @@ class Repository(
     }
 
     fun getAllStories(token: String) {
-        val client = apiService.getStories("Bearer $token")
+        val client = apiService.getStory("Bearer $token")
         client.enqueue(object : Callback<StoryResponse> {
             override fun onResponse(call: Call<StoryResponse>, response: Response<StoryResponse>
             ) {
@@ -143,7 +143,7 @@ class Repository(
     fun getAllStory() : LiveData<PagingData<ListStory>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 5,
+                pageSize = 3,
             ),
             remoteMediator = RemoteMediator(storyDatabase, apiService),
             pagingSourceFactory = {
