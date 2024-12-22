@@ -6,129 +6,108 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".view.story.StoryActivity">
+        android:orientation="vertical">
 
-        <!-- CardView -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardviewImageView"
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressIndicator"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="gone"
+            android:layout_marginTop="8dp"
+            android:elevation="10dp" />
 
-            <ImageView
-                android:id="@+id/previewImageView"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".view.story.StoryActivity">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardviewImageView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                app:srcCompat="@drawable/ic_placeholder"
-                android:importantForAccessibility="no" />
-        </androidx.cardview.widget.CardView>
+                android:layout_height="300dp"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Gallery Button -->
-        <Button
-            android:id="@+id/galleryButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/gallery"
-            android:backgroundTint="@color/purple2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/cameraButton"
-            app:layout_constraintTop_toBottomOf="@id/cardviewImageView" />
+                <ImageView
+                    android:id="@+id/previewImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    app:srcCompat="@drawable/ic_placeholder"
+                    android:importantForAccessibility="no" />
+            </androidx.cardview.widget.CardView>
 
-        <!-- Camera Button -->
-        <Button
-            android:id="@+id/cameraButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/camera"
-            android:backgroundTint="@color/purple2"
-            app:layout_constraintStart_toEndOf="@+id/galleryButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardviewImageView" />
+            <Button
+                android:id="@+id/galleryButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/gallery"
+                android:backgroundTint="@color/purple2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cameraButton"
+                app:layout_constraintTop_toBottomOf="@id/cardviewImageView" />
 
-        <!-- Description -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/descLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cameraButton">
+            <Button
+                android:id="@+id/cameraButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/camera"
+                android:backgroundTint="@color/purple2"
+                app:layout_constraintStart_toEndOf="@+id/galleryButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardviewImageView" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edAddDescription"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/descLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/descriptions" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sw_add_location">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:orientation="horizontal"
-            android:paddingEnd="16dp"
-            android:paddingStart="16dp"
-            android:background="@android:color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descLayout"
-            app:layout_constraintEnd_toEndOf="parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edAddDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/descriptions" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+
+            <Switch
+                android:id="@+id/sw_add_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="@string/enable_location" />
+                android:text="@string/sw_loc"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/cameraButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp" />
 
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/buttonEnableLocation"
-                android:layout_width="48dp"
-                android:layout_height="24dp"
-                android:textOff=""
-                android:textOn=""
-                android:switchTextAppearance="@null"
-                app:thumbTint="@color/purple"
-                app:trackTint="@color/purple2" />
+            <Button
+                android:id="@+id/buttonAdd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/upload"
+                android:backgroundTint="@color/purple2"
+                app:layout_constraintTop_toBottomOf="@id/descLayout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="NotSibling" />
 
-        </LinearLayout>
-
-
-        <!-- Upload Button -->
-        <Button
-            android:id="@+id/buttonAdd"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/upload"
-            android:backgroundTint="@color/purple2"
-            app:layout_constraintTop_toBottomOf="@id/buttonEnableLocation"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="NotSibling" />
-
-        <!-- ProgressBar -->
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminateTint="?attr/colorPrimaryVariant"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>

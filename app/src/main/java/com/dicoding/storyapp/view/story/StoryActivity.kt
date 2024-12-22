@@ -85,14 +85,14 @@ class StoryActivity : AppCompatActivity() {
                 binding.previewImageView.setImageURI(image)
             }
 
-        binding.buttonEnableLocation.setOnCheckedChangeListener {_, isChecked->
-            if(isChecked) {
-                getCurrentLocation()
-            } else {
-                lat = null
-                lon = null
+            binding.swAddLocation.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    getCurrentLocation()
+                } else {
+                    lat = null
+                    lon = null
+                }
             }
-        }
 
         binding.galleryButton.setOnClickListener { startGallery() }
         binding.cameraButton.setOnClickListener { startCamera() }
@@ -207,7 +207,7 @@ class StoryActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun showToast(message: String) {

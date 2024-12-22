@@ -40,9 +40,8 @@
     <string name="created">Akun berhasil dibuat</string>
     <string name="created_at">Dibuat di : %1$s</string>
     <string name="success">Login Berhasil</string>
-    <string name="enable_location">Lokasi tersedia</string>
     <string name="show_map">Tunjukkan Map</string>
     <string name="story_location">Lokasi Cerita</string>
     <string name="title_activity_maps">MapsActivity</string>
-
+    <string name="sw_loc">Gunakan Lokasi Saat Ini</string>
 </resources>

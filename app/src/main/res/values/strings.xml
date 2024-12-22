@@ -40,10 +40,8 @@
     <string name="created">Account Created</string>
     <string name="created_at">Created at : %1$s</string>
     <string name="success">Login Success</string>
-    <string name="enable_location">Enable Location</string>
     <string name="show_map">Show Map</string>
     <string name="story_location">Story Location</string>
     <string name="title_activity_maps">MapsActivity</string>
-    <string name="on">ON</string>
-    <string name="off">OFF</string>
+    <string name="sw_loc">Use Current Location</string>
 </resources>

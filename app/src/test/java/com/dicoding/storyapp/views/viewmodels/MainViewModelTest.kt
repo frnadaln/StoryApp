@@ -63,7 +63,7 @@ class MainViewModelTest {
     }
 
     @Test
-    fun `when Get Quote Empty Should Return No Data`() = runTest {
+    fun `when Get Story Empty Should Return No Data`() = runTest {
         val data: PagingData<ListStory> = PagingData.from(emptyList())
         val expectedQuote = MutableLiveData<PagingData<ListStory>>()
         expectedQuote.value = data

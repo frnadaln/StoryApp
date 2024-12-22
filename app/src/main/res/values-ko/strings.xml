@@ -40,9 +40,8 @@
     <string name="created">계정이 성공적으로 생성되었습니다</string>
     <string name="created_at">생성됨 : %1$s</string>
     <string name="success">로그인 성공</string>
-    <string name="enable_location">위치 활성화</string>
     <string name="show_map">지도 표시</string>
     <string name="story_location">스토리 위치</string>
     <string name="title_activity_maps">MapsActivity</string>
-
+    <string name="sw_loc">현재 위치 사용</string>
 </resources>
