@@ -105,7 +105,7 @@ class Repository(
             try {
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, UpResponse::class.java)
-            emit(Result.Error(errorResponse.message))
+                errorResponse.message?.let { Result.Error(it) }?.let { emit(it) }
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }

@@ -26,7 +26,9 @@ class StoryAdapter : PagingDataAdapter<ListStory, StoryAdapter.StoryViewHolder>(
 
     override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
         val story = story[position]
-        holder.bind(story)
+        if (story != null) {
+            holder.bind(story)
+        }
     }
 
     inner class StoryViewHolder(private val binding: ItemStoryBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -34,7 +36,8 @@ class StoryAdapter : PagingDataAdapter<ListStory, StoryAdapter.StoryViewHolder>(
             val context = binding.root.context
             binding.usernameTextView.text = story.name
             binding.description.text = story.description
-            binding.timeCreated.text = context.getString(R.string.created_at, formatDate(story.createdAt))
+            binding.timeCreated.text = context.getString(R.string.created_at,
+                story.createdAt?.let { formatDate(it) })
             Glide.with(itemView)
                 .load(story.photoUrl)
                 .placeholder(R.drawable.ic_placeholder)

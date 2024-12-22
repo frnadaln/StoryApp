@@ -9,10 +9,10 @@ import kotlinx.parcelize.Parcelize
 data class StoryResponse(
 
     @field:SerializedName("error")
-    val error: Boolean,
+    val error: Boolean? = null,
 
     @field:SerializedName("message")
-    val message: String,
+    val message: String? = null,
 
     @field:SerializedName("listStory")
     val listStory: List<ListStory>
@@ -26,30 +26,30 @@ data class ListStory(
     val id: String,
 
     @field:SerializedName("name")
-    val name: String,
+    val name: String? = null,
 
     @field:SerializedName("photoUrl")
-    val photoUrl: String,
+    val photoUrl: String? = null,
 
     @field:SerializedName("createdAt")
-    val createdAt: String,
+    val createdAt: String? = null,
 
     @field:SerializedName("lat")
-    val lat: Double?,
+    val lat: Double? = null,
 
     @field:SerializedName("lon")
-    val lon: Double?,
+    val lon: Double? = null,
 
     @field:SerializedName("description")
-    val description: String
+    val description: String? = null
 ) : Parcelable
 
 data class UpResponse(
     @field:SerializedName("error")
-    val error: Boolean,
+    val error: Boolean? = null,
 
     @field:SerializedName("message")
-    val message: String
+    val message: String? = null
 )
 
 data class SignupResponse(

@@ -159,7 +159,7 @@ class StoryActivity : AppCompatActivity() {
                         when (result) {
                             is Result.Loading -> showLoading(true)
                             is Result.Success -> {
-                                showToast(result.data.message)
+                                result.data.message?.let { showToast(it) }
                                 showLoading(false)
                                 val intent = Intent(this, MainActivity::class.java)
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
