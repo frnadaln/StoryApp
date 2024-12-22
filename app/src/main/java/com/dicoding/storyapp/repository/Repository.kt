@@ -1,5 +1,6 @@
 package com.dicoding.storyapp.repository
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -33,6 +34,7 @@ import retrofit2.HttpException
 import retrofit2.Response
 import java.io.File
 import com.dicoding.storyapp.di.Result
+import kotlinx.coroutines.flow.first
 import java.io.IOException
 
 class Repository(
@@ -87,6 +89,7 @@ class Repository(
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     fun uploadImage(token: String, imageFile: File, description: String, lat: Float? = null, lon: Float? = null) : LiveData<Result<UpResponse>> = liveData {
         emit(Result.Loading)
         val requestBody = description.toRequestBody("text/plain".toMediaType())
@@ -157,9 +160,12 @@ class Repository(
     fun getStoriesWithLocation(location : Int = 1) : LiveData<Result<StoryResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val res = apiService.getStoriesWithLocation(location)
+            val user = preference.getSession().first()
+            val token = "Bearer ${user.token}"
+            val res = apiService.getStoriesWithLocation(token, location)
 
             emit(Result.Success(res))
+
         } catch (e : HttpException) {
             Log.e(StoryResponse::class.java.simpleName, e.message.toString())
             try {
