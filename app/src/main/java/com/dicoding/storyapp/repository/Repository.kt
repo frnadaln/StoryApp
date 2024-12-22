@@ -146,7 +146,7 @@ class Repository(
     fun getAllStory() : LiveData<PagingData<ListStory>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 3,
+                pageSize = 5,
             ),
             remoteMediator = RemoteMediator(storyDatabase, apiService),
             pagingSourceFactory = {
@@ -155,7 +155,7 @@ class Repository(
         ).liveData
     }
 
-    suspend fun getListStory() : List<ListStory> = apiService.getStories().listStory
+    suspend fun getListStory() : List<ListStory> = apiService.getStories(token = String.toString()).listStory
 
     fun getStoriesWithLocation(location : Int = 1) : LiveData<Result<StoryResponse>> = liveData {
         emit(Result.Loading)

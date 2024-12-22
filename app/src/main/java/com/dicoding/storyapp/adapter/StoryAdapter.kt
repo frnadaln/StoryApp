@@ -26,9 +26,7 @@ class StoryAdapter : PagingDataAdapter<ListStory, StoryAdapter.StoryViewHolder>(
 
     override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
         val story = story[position]
-        if (story != null) {
-            holder.bind(story)
-        }
+        holder.bind(story)
     }
 
     inner class StoryViewHolder(private val binding: ItemStoryBinding) : RecyclerView.ViewHolder(binding.root) {

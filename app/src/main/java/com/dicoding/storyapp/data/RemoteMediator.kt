@@ -40,7 +40,7 @@ class RemoteMediator(
         }
 
         try {
-            val resData = apiService.getStories(page, state.config.pageSize)
+            val resData = apiService.getStories(page.toString(), state.config.pageSize)
             val endOfPaginationReached = resData.listStory.isEmpty()
 
             database.withTransaction {

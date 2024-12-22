@@ -23,7 +23,9 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     private var _curImage = MutableLiveData<Uri?>()
     val curImage : MutableLiveData<Uri?> = _curImage
 
-    fun setCurImage(uri : Uri?) { _curImage.value = uri }
+    fun setCurImage(uri: Uri?) {
+        _curImage.value = uri
+    }
 
     fun signup(name: String, email: String, password: String) = repository.signup(name, email, password)
     fun login(email: String, password: String) = repository.login(email, password)
