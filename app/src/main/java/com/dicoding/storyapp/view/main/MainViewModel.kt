@@ -16,20 +16,14 @@ import java.io.File
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
     val story : LiveData<PagingData<ListStory>> =
-        repository.getAllStory().cachedIn(viewModelScope)
-    val listStory = repository.listStory
+        repository.getAllStories().cachedIn(viewModelScope)
     val detail = repository.detail
 
     private var _curImage = MutableLiveData<Uri?>()
     val curImage : MutableLiveData<Uri?> = _curImage
 
-    fun setCurImage(uri: Uri?) {
-        _curImage.value = uri
-    }
-
     fun signup(name: String, email: String, password: String) = repository.signup(name, email, password)
     fun login(email: String, password: String) = repository.login(email, password)
-    fun getStories(token: String) = repository.getAllStories(token)
     fun getDetailStory(token: String, id: String) = repository.getDetailStory(token, id)
     fun uploadImage(token: String, file: File, description: String, lat: Float?, lon: Float?) = repository.uploadImage(token, file, description, lat, lon)
 

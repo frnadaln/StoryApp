@@ -42,8 +42,6 @@ class Repository(
     private val apiService : ApiService,
     private val preference: UserPreference
 ) {
-    private val _listStories = MutableLiveData<List<ListStory>>()
-    val listStory: LiveData<List<ListStory>> = _listStories
 
     private val _detail = MutableLiveData<Story>()
     val detail: LiveData<Story> = _detail
@@ -124,31 +122,13 @@ class Repository(
         instance = null
     }
 
-    fun getAllStories(token: String) {
-        val client = apiService.getStory("Bearer $token")
-        client.enqueue(object : Callback<StoryResponse> {
-            override fun onResponse(call: Call<StoryResponse>, response: Response<StoryResponse>
-            ) {
-                if (response.isSuccessful) {
-                    _listStories.value = response.body()?.listStory
-                } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<StoryResponse>, t: Throwable) {
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
-            }
-        })
-    }
-
     @OptIn(ExperimentalPagingApi::class)
-    fun getAllStory() : LiveData<PagingData<ListStory>> {
+    fun getAllStories() : LiveData<PagingData<ListStory>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 5,
             ),
-            remoteMediator = RemoteMediator(storyDatabase, apiService),
+            remoteMediator = RemoteMediator(storyDatabase, apiService, preference),
             pagingSourceFactory = {
                 storyDatabase.storyDao().getAllStory()
             }

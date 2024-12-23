@@ -33,11 +33,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getSession().observe(this) { user ->
             Log.d("MainActivity", "User session: token=${user.token}, isLogin=${user.isLogin}")
             showLoading(true)
-            if (user.token.isNotEmpty() && user.isLogin) {
-                viewModel.getStories(user.token)
-                showLoading(false)
-            } else {
-                showLoading(false)
+            if (user.token.isEmpty() || !user.isLogin) {
                 startActivity(Intent(this, WelcomeActivity::class.java))
                 finish()
             }
@@ -46,8 +42,9 @@ class MainActivity : AppCompatActivity() {
         binding.rvStory.layoutManager = LinearLayoutManager(this)
         binding.rvStory.adapter = adapter
 
-        viewModel.listStory.observe(this) { stories ->
-            adapter.setStory(stories)
+        viewModel.story.observe(this) { stories ->
+            println("stories: $stories")
+            adapter.submitData(lifecycle, stories)
             showLoading(false)
         }
 

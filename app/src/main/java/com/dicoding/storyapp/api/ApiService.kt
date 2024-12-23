@@ -36,11 +36,6 @@ interface ApiService {
     ): LoginResponse
 
     @GET("stories")
-    fun getStory(
-        @Header("Authorization") token: String,
-    ): Call<StoryResponse>
-
-    @GET("stories")
     suspend fun getStories(
         @Header("Authorization") token: String,
         @Query("page") page : Int = 1,

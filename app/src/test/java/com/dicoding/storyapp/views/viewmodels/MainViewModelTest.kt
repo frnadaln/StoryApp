@@ -45,7 +45,7 @@ class MainViewModelTest {
         val expectData = MutableLiveData<PagingData<ListStory>>()
         expectData.value = data
 
-        Mockito.`when`(repository.getAllStory()).thenReturn(expectData)
+        Mockito.`when`(repository.getAllStories()).thenReturn(expectData)
 
         val mainViewModel = MainViewModel(repository)
         val actualStory : PagingData<ListStory> = mainViewModel.story.getOrAwaitValue()
@@ -67,7 +67,7 @@ class MainViewModelTest {
         val data: PagingData<ListStory> = PagingData.from(emptyList())
         val expectedQuote = MutableLiveData<PagingData<ListStory>>()
         expectedQuote.value = data
-        Mockito.`when`(repository.getAllStory()).thenReturn(expectedQuote)
+        Mockito.`when`(repository.getAllStories()).thenReturn(expectedQuote)
         val mainViewModel = MainViewModel(repository)
         val actualQuote: PagingData<ListStory> = mainViewModel.story.getOrAwaitValue()
         val differ = AsyncPagingDataDiffer(
